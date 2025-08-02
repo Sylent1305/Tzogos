@@ -1,6 +1,6 @@
 # Tzogous 37 — Player Guide
 
-**Tzogous 37** is a fast-paced, poker-inspired card game with bluffing, bonus-based scoring, and tactical use of jokers. The game is played in structured betting rounds with **pot-limit** rules, where each player's maximum raise is limited to the current pot size.
+**Tzogous 37** is a fast-paced, poker-inspired card game focused on bluffing, tactical joker usage, and bonus-based scoring. The game features structured betting rounds with **pot-limit** rules, where each player's maximum raise is limited to the current pot size.
 
 ---
 
@@ -23,103 +23,126 @@
 
 ## Game Flow
 
+Each game consists of multiple rounds, played in cycles. A cycle includes four rounds, with players gradually using up their cards:
+
+### Round Structure
+
 1. Deal **7 cards** to each player.  
-2. Each player places **one face-down card**.  
-3. **First betting round** *(Pot-Limit)*: Check / Raise / Fold.  
-4. Remaining players place **one face-up card**.  
-5. **Second betting round** *(Pot-Limit)*.  
-6. Reveal cards → Calculate score → Highest hand wins the pot.  
-7. **Tie-breaker**: Tied players draw a card — highest wins.
+2. Each player selects and places **1 face-down card**.  
+3. **First betting round** (Pot-Limit): Check / Raise / Call / Fold.  
+4. Remaining players place **1 face-up card**.  
+5. **Second betting round** (Pot-Limit).  
+6. Reveal both cards → Calculate score → Highest hand wins the pot.  
+7. In case of a tie, perform a [tie-breaker draw](#tie-breaker).
+
+Players do **not draw** new cards between rounds.
+
+### Game Cycle (Card Countdown)
+
+| Round | Cards in Hand | Notes                        |
+|-------|----------------|------------------------------|
+| 1     | 7              | Standard round               |
+| 2     | 5              | Standard round               |
+| 3     | 3              | Standard round               |
+| 4     | 1              | Final Round with community card |
+
+### Final Round Rules
+
+- Players place their final card **face down**.  
+- A **community card** is drawn from the deck and placed **face up**.  
+- One betting round is held.  
+- Players reveal cards and score using the face-down card + community card.  
+- Winner takes the pot.  
+- Deck is reshuffled, and a new cycle begins.
 
 ---
 
 ## Pot-Limit Betting
 
-- Raise amount cannot exceed the size of the current pot.  
-- Minimum raise must at least match the previous bet or raise.  
-- Two betting rounds occur (after face-down and face-up cards).
+- A raise may **not exceed** the size of the current pot.  
+- Minimum raise must match the previous bet or raise.  
+- Two betting rounds per hand: after face-down and face-up cards.
 
-> Example: If the pot is 20 chips, the maximum a player may raise is 20.
+> Example: If the pot is 20 chips, the maximum raise is 20.
 
 ---
 
 ## Player Actions
 
-- **Check** – Pass without betting.  
-- **Raise** – Bet up to the pot size.  
+- **Check** – Pass without betting (only allowed if no bet is active).  
+- **Raise** – Bet any amount up to the pot size.  
 - **Call** – Match the current highest bet.  
-- **Fold** – Forfeit the hand and exit the round.
+- **Fold** – Forfeit your hand and exit the round.
 
 ---
 
 ## Joker Rules
 
-- Use a joker **before acting** (Check / Raise / Fold).  
-- **Replace** one opponent’s card (face-down or face-up) with a card from your hand.  
-- After use, draw a new card to restore your hand to 7 cards.
+- A joker may be used **before taking your action**.  
+- Using a joker allows you to **replace** one card (face-down or face-up) of an opponent with one card from your own hand.  
+- After using a joker, **draw 1 card** from the deck to restore your hand to 7 cards.
 
-> Jokers have value 0 and serve only for tactical manipulation.
+> Jokers have a value of 0 and are used purely for tactical disruption.
 
 ---
 
 ## Card Values
 
-| Card  | Value     |
-|-------|-----------|
-| 2–10  | Face value |
-| J     | 11        |
-| Q     | 12        |
-| K     | 13        |
-| A     | 14        |
-| Joker | 0         |
+| Card   | Value     |
+|--------|-----------|
+| 2–10   | Face value |
+| J      | 11        |
+| Q      | 12        |
+| K      | 13        |
+| A      | 14        |
+| Joker  | 0         |
 
 ---
 
 ## Scoring
 
-Each player’s final hand consists of the two cards they played.  
-Score = **sum of card values** + **one applicable bonus** (no further stacking).
+Each player scores based on the **sum of their two played cards**, plus **one applicable bonus**.
 
 ### Bonus Combinations
 
-| Combination               | Bonus Points |
-|---------------------------|--------------|
-| Flush (same suit)         | +3           |
-| Straight (consecutive)    | +5           |
-| Pair (same rank)          | +7           |
-| Straight Flush            | +10          |
+| Combination             | Bonus Points |
+|-------------------------|--------------|
+| Flush (same suit)       | +3           |
+| Straight (consecutive)  | +5           |
+| Pair (same rank)        | +7           |
+| Straight Flush          | +10          |
 
-> **Note:**
-> - “Straight” requires two cards of consecutive rank, including Ace–2 sequence (Ace counts as low).  
-> - “Straight Flush” replaces separate Straight and Flush bonuses.  
-> - Only one bonus applies per hand.
+> Notes:
+> - A straight may be A–2 (Ace counts as low).  
+> - Only the highest applicable bonus is counted.  
+> - A Straight Flush replaces both the Straight and Flush bonuses.
 
-#### Corrected Examples
+### Examples
 
-- **Flush only** (same suit, not consecutive):  
+- **Flush only**:  
   10♥ + Q♥ → (10 + 12) + 3 = **25**
 
-- **Straight only** (consecutive, different suits):  
+- **Straight only**:  
   J♣ + Q♦ → (11 + 12) + 5 = **28**
 
-- **Straight Flush** (consecutive and same suit):  
+- **Straight Flush**:  
   J♥ + Q♥ → (11 + 12) + 10 = **33**
 
 ---
 
 ## Tie Breaker
 
-If two or more players tie after scoring:
+In case of a scoring tie:
 
-1. Each draws a card from the deck.  
+1. Each tied player draws one card from the deck.  
 2. Highest card wins the pot.  
-3. If still tied, repeat the draw.
+3. If tied again, repeat the draw.
 
 ---
 
 ## Hand Probability (Reference)
 
-Probability of obtaining specific two-card combinations when drawing two cards randomly from a standard 52-card deck:
+Approximate probability of receiving specific two-card combinations from a full deck:
 
 | Combination       | Count | Probability (%) |
 |-------------------|------:|----------------:|
@@ -129,51 +152,60 @@ Probability of obtaining specific two-card combinations when drawing two cards r
 | Straight Flush    |    48 |            3.62 |
 | High Card         |   792 |           59.73 |
 
-> **Note:**  
-> - “Flush (non-SF)” refers to two cards of the same suit that are not consecutive.  
-> - “Straight (non-SF)” refers to two consecutive ranks of different suits.
+> Definitions:  
+> - *Flush (non-SF)*: Same suit, not consecutive.  
+> - *Straight (non-SF)*: Consecutive rank, different suits.
 
 ---
 
 ## Best Two-Card Hand from Seven Cards
 
-Based on a 100 000-hand simulation, the probability that the best two-card combination drawn from a random 7-card hand falls into each category:
+Based on a simulation of 100,000 hands, these are the likelihoods of the **best two-card combo** in a 7-card hand:
 
-| Category        | Probability (%) |
-|-----------------|-----------------|
-| Straight Flush  | 60.55           |
-| Straight        | 35.96           |
-| Flush           | 3.49            |
-| Pair            | <0.01           |
-| High Card       | <0.01           |
+| Category         | Probability (%) |
+|------------------|-----------------|
+| Straight Flush   | 60.55           |
+| Straight         | 35.96           |
+| Flush            | 3.49            |
+| Pair             | <0.01           |
+| High Card        | <0.01           |
 
-> These probabilities illustrate how likely you are to be able to form each combination when selecting two cards from your full hand, informing decisions about which cards to keep or discard.
+> These probabilities help guide which cards to prioritize or discard.
 
 ---
 
 ## Optional Variants
 
-- **Two-Deck Mode**: Enables “Pair + Suit” bonus (treat as 10 bonus points total).  
-- **Joker Limit**: Restrict each player to one joker use per round or game.  
+- **Two-Deck Mode**: Enables a bonus for “Pair + Suit” (treat as +10 points).  
+- **Joker Limit**: Restrict each player to one joker use per round or per game.  
 - **Sudden Death**: After three tie-break draws, split the pot.
 
 ---
 
 ## Example Round Summary
 
-1. Deal 7 cards.  
-2. Player A plays face-down 9; Player B plays face-down Q.  
-3. First betting round (pot = 10 → A raises 10 → pot = 20 → B calls).  
-4. Players place face-up cards: A shows K; B shows Q.  
-5. Second betting round (pot = 40 → B raises 30 → pot = 70 → A calls).  
-6. Reveal:  
-   - A: 9 + 13 = 22  
-   - B: 12 + 12 = 24 + 7 (pair) = 31 → **B wins**.
+**2-Player Example (Round 1 of Cycle)**
+
+1. Both players ante 5 chips → pot = 10  
+2. Each receives 7 cards  
+3. Player A plays face-down 9♦; Player B plays face-down Q♠  
+4. **First Betting Round**  
+   - Player A raises 10 → pot = 20  
+   - Player B calls → pot = 30  
+5. Players reveal face-up cards  
+   - Player A: K♣  
+   - Player B: Q♥  
+6. **Second Betting Round**  
+   - Player B raises 30 → pot = 60  
+   - Player A calls → pot = 90  
+7. **Reveal**  
+   - Player A: 9♦ + K♣ = 22  
+   - Player B: Q♠ + Q♥ = 24 + 7 (pair bonus) = **31**  
+   - **Player B wins 90 chips**
 
 ---
 
 ## License
 
 Distributed under the **MIT License**.  
-See `LICENSE` for details.
-  
+See the `LICENSE` file for full license details.
