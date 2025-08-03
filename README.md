@@ -26,7 +26,7 @@
 Each game consists of multiple rounds, played in cycles. A cycle includes four rounds, with players gradually using up their cards:
 
 ### Round Structure
-
+- All players place an ante, the player after the BTN starts talking.
 1. Deal **7 cards** to each player.  
 2. Each player selects and places **1 face-down card**.  
 3. **First betting round** (Pot-Limit): Check / Raise / Call / Fold.  
