@@ -1,6 +1,13 @@
 ﻿#include "Card.h"
 
 
+Card::Card(int suit, int value, bool isjoker)
+{
+	this->suit = suit;
+	this->value = value;
+	this->isjoker = isjoker;
+}
+
 Card::~Card()
 {
 	// Destructor does not need to do anything special for this class
@@ -40,3 +47,29 @@ std::string Card::toString() const
 	}
 	return valueStr + suitStr;
 }
+
+int Card::getSuit() const
+{
+	return this->suit;
+}
+
+int Card::getValue() const
+{
+	return this->value;
+}
+
+bool Card::isJoker() const
+{
+	return this->isjoker;
+}
+
+void Card::setSuit(int suit)
+{
+	this->suit = suit;
+}
+
+void Card::setValue(int value)
+{
+	this->value = value;
+}
+

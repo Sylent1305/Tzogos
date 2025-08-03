@@ -34,20 +34,24 @@ enum CardValue
 class Card
 {
     public:
-		Card(int suit, int value, bool isJoker = false);
+		//constructor and destructor
+		Card() : suit(NONE), value(JOKER), isjoker(true) {} // Default constructor for Joker
+		Card(int suit, int value, bool isjoker = false);
         ~Card();
 
+		//public methods
 		std::string toString() const;
 
     private:
+		//methods
 		int getSuit() const;
 		int getValue() const;
 		bool isJoker() const;
 		void setSuit(int suit);
 		void setValue(int value);
 
-		
-		bool isJoker; // look at enum declarion
+		//properties
+		bool isjoker;
 	    int suit; // look at enum declartion
 	    int value; // 2-14 (11=Jack, 12=Queen, 13=King, 14=Ace, 0=Joker)
 

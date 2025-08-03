@@ -29,6 +29,8 @@ Card Deck::dealCard()
    return dealtCard; // Return the card by value  
 }
 
+
+
 void Deck::resetDeck()
 {
 	const int jokers_amount_in_deck = 2; // number of jokers in deck

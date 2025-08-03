@@ -11,14 +11,19 @@
 class Deck  
 {  
    public:  
-       Deck();  
-       ~Deck();  
-       void shuffle();  
-       Card dealCard(); 
-       void resetDeck();  
+        // Constructor and Destructor
+        Deck();  
+        ~Deck();  
 
-   private:  
-       std::list<Card> deck;
+    private:
+        // methods
+        void shuffle();
+        Card dealCard();
+        void resetDeck();
+        void dealRound(std::list<Player> players,int amountofcards, bool isfinalround);
+
+        //properties
+        std::list<Card> deck;
 };  
 
 #endif
