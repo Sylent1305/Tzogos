@@ -6,7 +6,7 @@
 
 enum CardSuit
 {
-	NONE = 0, // for jokers
+	NONE = 0, // for jokers and empty cards
 	SPADES = 1,
 	HEARTS = 2,
 	DIAMONDS = 3,
@@ -28,28 +28,28 @@ enum CardValue
 	QUEEN = 12,
 	KING = 13,
 	ACE = 14,
-	JOKER = 0 // for jokers
+	JOKER = 0, // for jokers
+	EMPTY = -1 // for empty cards
 };
 
 class Card
 {
     public:
 		//constructor and destructor
-		Card() : suit(NONE), value(JOKER), isjoker(true) {} // Default constructor for Joker
+		Card() : suit(NONE), value(EMPTY), isjoker(false) {}
+		Card(bool isjoker) : suit(NONE), value(JOKER), isjoker(true) {} 
 		Card(int suit, int value, bool isjoker = false);
         ~Card();
 
 		//public methods
-		std::string toString() const;
-
-    private:
-		//methods
 		int getSuit() const;
 		int getValue() const;
 		bool isJoker() const;
 		void setSuit(int suit);
 		void setValue(int value);
+		std::string toString() const;
 
+    private:
 		//properties
 		bool isjoker;
 	    int suit; // look at enum declartion

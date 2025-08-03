@@ -1,7 +1,6 @@
-
 #include <iostream>
+#include <stdexcept>
 
 int main()
 {
-    std::cout << "Server Start\n";
 }

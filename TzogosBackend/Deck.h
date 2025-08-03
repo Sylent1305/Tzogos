@@ -7,6 +7,7 @@
 #include <random>    
 
 #include "Card.h"
+#include "Player.h"
 
 class Deck  
 {  
@@ -14,14 +15,12 @@ class Deck
         // Constructor and Destructor
         Deck();  
         ~Deck();  
-
-    private:
         // methods
         void shuffle();
         Card dealCard();
         void resetDeck();
-        void dealRound(std::list<Player> players,int amountofcards, bool isfinalround);
-
+        void dealRound(std::list<Player> players, int amountofcards);
+    private:
         //properties
         std::list<Card> deck;
 };  
