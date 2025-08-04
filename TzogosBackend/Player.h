@@ -12,7 +12,7 @@
 class Player  
 {  
    public:  
-       Player();  
+       Player(std::string name,std::string passwrd);  
        ~Player();  
 
        //methods  
@@ -21,12 +21,29 @@ class Player
        std::array<Card, HAND_SIZE> getHand() const;
        int getScore() const;
        void setScore(int score);
+	   int getChips() const;
+	   void setChips(int chips);
+	   void addChips(int chips);
+	   void removeChips(int chips);
+	   std::string toString() const;
+	   std::string getName() const;
+	   void setName(const std::string& name);
+	   // Overloaded operators
+	   bool operator==(const Player& other) const;
+	   bool operator!=(const Player& other) const;
+       std::string getUUID() const;
+	   std::string getPassword() const;
+       void setPassword(const std::string& passwrd);
+
 
    private:  
        //properties  
+       std::string uuid;
+       std::string name;
+       std::string passwrd;
        std::array<Card, HAND_SIZE> hand;  
        int score;  
-
+       int chips;
 };  
 
 #endif // PLAYER_H

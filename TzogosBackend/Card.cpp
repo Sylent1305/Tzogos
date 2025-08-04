@@ -15,7 +15,7 @@ Card::~Card()
 
 std::string Card::toString() const
 {
-	if (isJoker)
+	if (this->isjoker)
 	{
 		return "Joker";
 	}

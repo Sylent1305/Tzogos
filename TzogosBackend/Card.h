@@ -48,6 +48,9 @@ class Card
 		void setSuit(int suit);
 		void setValue(int value);
 		std::string toString() const;
+		
+		//copy constractor
+		Card(const Card& other) : suit(other.suit), value(other.value), isjoker(other.isjoker) {}
 
     private:
 		//properties

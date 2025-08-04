@@ -62,4 +62,14 @@ class InvalidActionException : public std::runtime_error
 public:
 	InvalidActionException() : std::runtime_error("Invalid action. Cannot perform action.") {}
 };
+class NegativeNumberException : public std::runtime_error
+{
+public:
+	NegativeNumberException() : std::runtime_error("Negative number encountered. Cannot perform action.") {}
+};
+class MissingChipsException : public std::runtime_error
+{
+public:
+	MissingChipsException() : std::runtime_error("Not enough chips. Cannot perform action.") {}
+};
 #endif // EXCEPTION_H

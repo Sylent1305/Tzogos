@@ -12,10 +12,13 @@ Deck::~Deck()
 
 void Deck::shuffle()
 {
-	std::random_device rd; // obtain a random number from hardware
-	std::mt19937 eng(rd()); // seed the generator
-	std::shuffle(this->deck.begin(), this->deck.end(), eng); // shuffle the deck using the random engine
+	std::vector<Card> temp(deck.begin(), deck.end()); // temp vector
+	std::random_device rd;
+	std::mt19937 eng(rd());
+	std::shuffle(temp.begin(), temp.end(), eng); // suffle
+	deck.assign(temp.begin(), temp.end()); // back to list
 }
+
 
 Card Deck::dealCard()  
 {  
@@ -40,19 +43,19 @@ void Deck::resetDeck()
 	{
 		for (int value = TWO; value <= ACE; ++value)
 		{
-			Card newCard = new Card(suit,value);
+			Card newCard(suit,value);
 			this->deck.push_back(newCard);
 		}
 	}
 	for (size_t i = 0; i < jokers_amount_in_deck; i++)
 	{
-		Card newjoker = new Card(NONE,JOKER,true);
+		Card newjoker(NONE,JOKER,true);
 		this->deck.push_back(newjoker); // add a joker to the deck
 	}
 	this->shuffle(); // shuffle the deck after resetting
 }
 
-void Deck::dealRound(std::list<Player> players, int amountofcards)
+void Deck::dealRound(std::list<Player>& players, int amountofcards)
 {
 	if (players.empty()) // Check if there are no players
 	{

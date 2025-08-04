@@ -3,22 +3,6 @@
   "WorkspaceRootPath": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{36C79052-A345-479C-999C-43698DAEAAD9}|TzogosBackend.vcxproj|C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\TzogosBackend.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{36C79052-A345-479C-999C-43698DAEAAD9}|TzogosBackend.vcxproj|solutionrelative:TzogosBackend.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36C79052-A345-479C-999C-43698DAEAAD9}|TzogosBackend.vcxproj|C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Deck.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{36C79052-A345-479C-999C-43698DAEAAD9}|TzogosBackend.vcxproj|solutionrelative:Deck.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36C79052-A345-479C-999C-43698DAEAAD9}|TzogosBackend.vcxproj|C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Deck.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{36C79052-A345-479C-999C-43698DAEAAD9}|TzogosBackend.vcxproj|solutionrelative:Deck.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{36C79052-A345-479C-999C-43698DAEAAD9}|TzogosBackend.vcxproj|C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Card.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
-      "RelativeMoniker": "D:0:0:{36C79052-A345-479C-999C-43698DAEAAD9}|TzogosBackend.vcxproj|solutionrelative:Card.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{36C79052-A345-479C-999C-43698DAEAAD9}|TzogosBackend.vcxproj|C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{36C79052-A345-479C-999C-43698DAEAAD9}|TzogosBackend.vcxproj|solutionrelative:Player.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     },
@@ -33,6 +17,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{36C79052-A345-479C-999C-43698DAEAAD9}|TzogosBackend.vcxproj|C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Exception.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
       "RelativeMoniker": "D:0:0:{36C79052-A345-479C-999C-43698DAEAAD9}|TzogosBackend.vcxproj|solutionrelative:Exception.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{36C79052-A345-479C-999C-43698DAEAAD9}|TzogosBackend.vcxproj|C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\TzogosBackend.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{36C79052-A345-479C-999C-43698DAEAAD9}|TzogosBackend.vcxproj|solutionrelative:TzogosBackend.cpp||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
     }
   ],
   "DocumentGroupContainers": [
@@ -42,47 +30,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 6,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Deck.h",
-              "DocumentMoniker": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Deck.h",
-              "RelativeDocumentMoniker": "Deck.h",
-              "ToolTip": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Deck.h",
-              "RelativeToolTip": "Deck.h",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAmwBcAAAAUAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-08-03T16:21:25.265Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Card.h",
-              "DocumentMoniker": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Card.h",
-              "RelativeDocumentMoniker": "Card.h",
-              "ToolTip": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Card.h",
-              "RelativeToolTip": "Card.h",
-              "ViewState": "AgIAACEAAAAAAAAAAAAUwDMAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-08-03T16:09:49.245Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Deck.cpp",
-              "DocumentMoniker": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Deck.cpp",
-              "RelativeDocumentMoniker": "Deck.cpp",
-              "ToolTip": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Deck.cpp",
-              "RelativeToolTip": "Deck.cpp",
-              "ViewState": "AgIAACMAAAAAAAAAAAAYwDYAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-03T14:44:11.051Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
@@ -93,67 +42,67 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Exception.h",
-              "DocumentMoniker": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Exception.h",
-              "RelativeDocumentMoniker": "Exception.h",
-              "ToolTip": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Exception.h",
-              "RelativeToolTip": "Exception.h",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAD8AAAACAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-08-03T16:10:06.563Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Player.cpp",
-              "DocumentMoniker": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Player.cpp",
-              "RelativeDocumentMoniker": "Player.cpp",
-              "ToolTip": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Player.cpp",
-              "RelativeToolTip": "Player.cpp",
-              "ViewState": "AgIAADAAAAAAAAAAAAAmwBcAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-03T15:06:52.702Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
               "Title": "Player.h",
               "DocumentMoniker": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Player.h",
               "RelativeDocumentMoniker": "Player.h",
               "ToolTip": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Player.h",
               "RelativeToolTip": "Player.h",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABgAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2025-08-03T14:57:50.422Z",
+              "WhenOpened": "2025-08-04T18:55:28.335Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "TzogosBackend.cpp",
-              "DocumentMoniker": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\TzogosBackend.cpp",
-              "RelativeDocumentMoniker": "TzogosBackend.cpp",
-              "ToolTip": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\TzogosBackend.cpp",
-              "RelativeToolTip": "TzogosBackend.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-03T14:44:04.164Z",
+              "DocumentIndex": 2,
+              "Title": "Card.h",
+              "DocumentMoniker": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Card.h",
+              "RelativeDocumentMoniker": "Card.h",
+              "ToolTip": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Card.h",
+              "RelativeToolTip": "Card.h",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADYAAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-08-04T18:53:17.168Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Card.cpp",
-              "DocumentMoniker": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Card.cpp",
-              "RelativeDocumentMoniker": "Card.cpp",
-              "ToolTip": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Card.cpp",
-              "RelativeToolTip": "Card.cpp",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAANAAAAAAAAAA==",
+              "Title": "Exception.h",
+              "DocumentMoniker": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Exception.h",
+              "RelativeDocumentMoniker": "Exception.h",
+              "ToolTip": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Exception.h",
+              "RelativeToolTip": "Exception.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2025-08-04T18:53:15.865Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "TzogosBackend.cpp",
+              "DocumentMoniker": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\TzogosBackend.cpp",
+              "RelativeDocumentMoniker": "TzogosBackend.cpp",
+              "ToolTip": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\TzogosBackend.cpp",
+              "RelativeToolTip": "TzogosBackend.cpp",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
-              "WhenOpened": "2025-08-02T10:13:44.744Z",
+              "WhenOpened": "2025-08-04T18:28:07.355Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Player.cpp",
+              "DocumentMoniker": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Player.cpp",
+              "RelativeDocumentMoniker": "Player.cpp",
+              "ToolTip": "C:\\Shoham\\Coding\\Tzogos\\TzogosBackend\\Player.cpp",
+              "RelativeToolTip": "Player.cpp",
+              "ViewState": "AgIAABkAAAAAAAAAAAAcwJoAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000677|",
+              "WhenOpened": "2025-08-03T15:06:52.702Z",
               "EditorCaption": ""
             }
           ]
