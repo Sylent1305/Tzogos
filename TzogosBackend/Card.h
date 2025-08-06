@@ -36,8 +36,8 @@ class Card
 {
     public:
 		//constructor and destructor
-		Card() : suit(NONE), value(EMPTY), isjoker(false) {}
-		Card(bool isjoker) : suit(NONE), value(JOKER), isjoker(true) {} 
+		Card(); //_suit(NONE), _value(EMPTY), _isjoker(false) 
+		Card(bool isjoker); // _suit(NONE), _value(JOKER), _isjoker(true)
 		Card(int suit, int value, bool isjoker = false);
         ~Card();
 
@@ -50,13 +50,13 @@ class Card
 		std::string toString() const;
 		
 		//copy constractor
-		Card(const Card& other) : suit(other.suit), value(other.value), isjoker(other.isjoker) {}
+		Card(const Card& other); //_suit(other.suit), _value(other.value), _isjoker(other.isjoker) {}
 
     private:
 		//properties
-		bool isjoker;
-	    int suit; // look at enum declartion
-	    int value; // 2-14 (11=Jack, 12=Queen, 13=King, 14=Ace, 0=Joker)
+		bool _isjoker;
+	    int _suit; // look at enum declartion
+	    int _value; // 2-14 (11=Jack, 12=Queen, 13=King, 14=Ace, 0=Joker)
 
 };
 

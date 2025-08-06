@@ -38,12 +38,12 @@ class Player
 
    private:  
        //properties  
-       std::string uuid;
-       std::string name;
-       std::string passwrd;
-       std::array<Card, HAND_SIZE> hand;  
-       int score;  
-       int chips;
+       std::string _uuid;
+       std::string _name;
+       std::string _passwrd;
+       std::array<Card, HAND_SIZE> _hand;  
+       int _score;  
+       int _chips;
 };  
 
 #endif // PLAYER_H

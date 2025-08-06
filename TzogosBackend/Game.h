@@ -1,0 +1,98 @@
+#pragma once
+#ifndef GAME_H
+#define GAME_H
+
+#include <list>
+#include <vector>
+#include <random>
+#include "Player.h"
+#include "Deck.h"
+
+enum GameState
+{
+	NOT_STARTED,
+	IN_PROGRESS,
+	COMPLETED
+};
+
+enum Round_Num
+{
+	FIRST_ROUND = 1, // first card face down , second card face up
+	SECOND_ROUND, //first card face down , second card face down
+	THIRD_ROUND, //first card face up, second card face down
+	FINAL_ROUND
+};
+
+enum GameMode
+{
+	DD = 1, // Double the deck, double the jokers
+	SD, // Sudden death
+	TD, // Till Death
+	SDD, // Sudden death double deck
+	JL, // restricts one joker each player per hand
+	SD_JL, // Sudden death with joker limit
+	TD_JL, // Till death with joker limit
+	SDD_JL, // Sudden death double deck with joker limit
+	TDD_JL // Till death double deck with joker 
+};
+
+enum BonusScore
+{
+	NO_BONUS = 0,
+	FLUSH = 3,
+	STRAIGHT = 5,
+	PAIR = 7,
+	SFLUSH = 10,
+	SUITED_PAIR = 12
+
+};
+
+class Game
+{
+	public:
+		Game(int maxHands, std::list<Player> players );
+		~Game();
+		int getRoundNum() const;
+		int getHandNumber() const;
+		int getMaxHands() const;
+		int getGameState() const;
+		void setRoundNum(int round);
+		void setHandNumber(int hand);
+		void setMaxHands(int max);
+		void setGameState(int state);
+		void setGameMode(int mode);
+		int getMaxPlayers() const;
+		int getGameMode() const;
+		std::list<Player> getPlayerTurnOrder() const;
+		void setPlayerTurnOrder(const std::list<Player>& players);
+		void addPlayerToTurnOrder(const Player& player);
+		void removePlayerFromTurnOrder(const Player& player);
+		void clearPlayerTurnOrder();
+		void shufflePlayerTurnOrder(); 
+		void dealRound();
+		void resetGame();
+		void startGame();
+		void endGame();
+		void nextRound();
+		void nextHand();
+		void setDeck(const Deck& deck);
+		Deck getDeck() const;
+		std::string toString() const; // for debugging purposes
+		std::list<Player> getPlayers() const; 
+		void showdown(); // to determine the winner of the hand based on players' hands
+		
+
+
+	private:
+		int _roundNum; // Round_Num Enum
+		int _handNumber; // to keep count when the next game will start
+		int _maxHands; // define when creating a game in order to limit the number of hands in a game , each hand contains 4 rounds
+		int _gameState; // GameState Enum
+		int _maxPlayers; // maximum number of players in a game
+		int _gameMode; // GameMode Enum
+		Deck _deck; // deck of cards used in the game
+		std::list<Player> _player_turn_order; // list of players in the order they will play
+
+
+};
+#endif // GAME_H

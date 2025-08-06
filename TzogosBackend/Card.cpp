@@ -1,11 +1,19 @@
 ﻿#include "Card.h"
 
 
+Card::Card()
+{
+}
+
+Card::Card(bool isjoker)
+{
+}
+
 Card::Card(int suit, int value, bool isjoker)
 {
-	this->suit = suit;
-	this->value = value;
-	this->isjoker = isjoker;
+	_suit = suit;
+	_value = value;
+	_isjoker = isjoker;
 }
 
 Card::~Card()
@@ -15,12 +23,12 @@ Card::~Card()
 
 std::string Card::toString() const
 {
-	if (this->isjoker)
+	if (_isjoker)
 	{
 		return "Joker";
 	}
 	std::string suitStr;
-	switch (suit)
+	switch (_suit)
 	{
 	case SPADES:   suitStr = "♠"; break;
 	case HEARTS:   suitStr = "♥"; break;
@@ -29,13 +37,13 @@ std::string Card::toString() const
 	default:       suitStr = ""; break;
 	}
 	std::string valueStr;
-	if (value >= TWO && value <= TEN)
+	if (_value >= TWO && _value <= TEN)
 	{
-		valueStr = std::to_string(value); // For values 2-10, use the numeric value
+		valueStr = std::to_string(_value); // For values 2-10, use the numeric value
 	}
 	else
 	{
-		switch (value)
+		switch (_value)
 		{
 		case JOKER:  valueStr = "Joker"; break;
 		case JACK:   valueStr = "J"; break;
@@ -48,28 +56,35 @@ std::string Card::toString() const
 	return valueStr + suitStr;
 }
 
+Card::Card(const Card& other)
+{
+	_suit = other._suit;
+	_value = other._value;
+	_isjoker = other._isjoker;
+}
+
 int Card::getSuit() const
 {
-	return this->suit;
+	return _suit;
 }
 
 int Card::getValue() const
 {
-	return this->value;
+	return _value;
 }
 
 bool Card::isJoker() const
 {
-	return this->isjoker;
+	return _isjoker;
 }
 
 void Card::setSuit(int suit)
 {
-	this->suit = suit;
+	_suit = suit;
 }
 
 void Card::setValue(int value)
 {
-	this->value = value;
+	_value = value;
 }
 

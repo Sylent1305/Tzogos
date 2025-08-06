@@ -22,7 +22,7 @@ class Deck
         void dealRound(std::list<Player>& players, int amountofcards);
     private:
         //properties
-        std::list<Card> deck;
+        std::list<Card> _deck;
 };  
 
-#endif
+#endif // DECK_H

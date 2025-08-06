@@ -174,11 +174,11 @@ Based on a simulation of 100,000 hands, these are the likelihoods of the **best 
 
 ---
 
-## Optional Variants
+## Optional 
 
-- **Two-Deck Mode**: Enables a bonus for “Pair + Suit” (treat as +10 points).  
-- **Joker Limit**: Restrict each player to one joker use per round or per game.  
-- **Sudden Death**: After three tie-break draws, split the pot.
+- **Two-Deck Mode**: Enables a bonus for “Pair + Suit” (treat as +12 points).  
+- **Joker Limit**: Restrict each player to one joker use per hand.  
+- **Sudden Death**: After one tie-break draws, split the pot.
 
 ---
 
