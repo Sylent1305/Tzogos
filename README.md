@@ -9,51 +9,45 @@
 1. [Game Flow](#game-flow)  
 2. [Pot-Limit Betting](#pot-limit-betting)  
 3. [Player Actions](#player-actions)  
-4. [Joker Rules](#joker-rules)  
-5. [Card Values](#card-values)  
-6. [Scoring](#scoring)  
-7. [Tie Breaker](#tie-breaker)  
-8. [Hand Probability (Reference)](#hand-probability-reference)  
-9. [Best Two-Card Hand from Seven Cards](#best-two-card-hand-from-seven-cards)  
-10. [Optional Variants](#optional-variants)  
-11. [Example Round Summary](#example-round-summary)  
-12. [License](#license)  
+4. [Folding Rules](#folding-rules)  
+5. [Joker Rules](#joker-rules)  
+6. [Card Values](#card-values)  
+7. [Scoring](#scoring)  
+8. [Tie Breaker](#tie-breaker)  
+9. [Hand Probability (Reference)](#hand-probability-reference)  
+10. [Best Two-Card Hand from Seven Cards](#best-two-card-hand-from-seven-cards)  
+11. [Optional Variants](#optional-variants)  
+12. [Example Round Summary](#example-round-summary)  
+13. [License](#license)  
 
 ---
 
 ## Game Flow
 
-Each game consists of multiple rounds, played in cycles. A cycle includes four rounds, with players gradually using up their cards:
+Each **hand** consists of **four rounds**, with players gradually using up their cards. A hand ends when all four rounds are played, and then a new hand begins with a new 7-card hand per player.
 
-### Round Structure
-- All players place an ante, the player after the BTN starts talking.
-1. Deal **7 cards** to each player.  
-2. Each player selects and places **1 face-down card**.  
-3. **First betting round** (Pot-Limit): Check / Raise / Call / Fold.  
-4. Remaining players place **1 face-up card**.  
-5. **Second betting round** (Pot-Limit).  
-6. Reveal both cards → Calculate score → Highest hand wins the pot.  
-7. In case of a tie, perform a [tie-breaker draw](#tie-breaker).
+### Round Structure (Per Hand)
 
-Players do **not draw** new cards between rounds.
+| Round | Card Play Style                                    | Notes                              |
+|-------|-----------------------------------------------------|-------------------------------------|
+| 1     | **First card face-down**, then **second face-up**  | Standard round                      |
+| 2     | **Both cards face-down**                           | Hidden showdown                     |
+| 3     | **First card face-up**, then **second face-down**  | Reverse of Round 1                  |
+| 4     | **One card face-down** + **1 community card**      | Final round, with shared card       |
 
-### Game Cycle (Card Countdown)
+Each round follows this structure:
 
-| Round | Cards in Hand | Notes                        |
-|-------|----------------|------------------------------|
-| 1     | 7              | Standard round               |
-| 2     | 5              | Standard round               |
-| 3     | 3              | Standard round               |
-| 4     | 1              | Final Round with community card |
+1. All players place an **ante** (small forced bet).  
+2. Card placement based on round style.  
+3. **First betting round** (Pot-Limit).  
+4. After both cards are placed, **second betting round**.  
+5. Cards are revealed → Scores calculated → Highest score wins the pot.  
+6. In case of a tie, perform a [tie-breaker draw](#tie-breaker).  
 
-### Final Round Rules
+> Players **do not draw new cards** during the hand.  
+> After 4 rounds, the hand ends, and a new hand begins with new cards.
 
-- Players place their final card **face down**.  
-- A **community card** is drawn from the deck and placed **face up**.  
-- One betting round is held.  
-- Players reveal cards and score using the face-down card + community card.  
-- Winner takes the pot.  
-- Deck is reshuffled, and a new cycle begins.
+> ⚠️ **Folding Rule**: If a player folds **after placing only one card**, they must **discard** an additional card from their hand immediately, following the round’s placement rules (face-up or face-down). This keeps the game state balanced.
 
 ---
 
@@ -61,7 +55,7 @@ Players do **not draw** new cards between rounds.
 
 - A raise may **not exceed** the size of the current pot.  
 - Minimum raise must match the previous bet or raise.  
-- Two betting rounds per hand: after face-down and face-up cards.
+- Two betting rounds per hand: after each card placement.
 
 > Example: If the pot is 20 chips, the maximum raise is 20.
 
@@ -72,7 +66,22 @@ Players do **not draw** new cards between rounds.
 - **Check** – Pass without betting (only allowed if no bet is active).  
 - **Raise** – Bet any amount up to the pot size.  
 - **Call** – Match the current highest bet.  
-- **Fold** – Forfeit your hand and exit the round.
+- **Fold** – Forfeit your hand and exit the round (see [Folding Rules](#folding-rules)).
+
+---
+
+## Folding Rules
+
+When a player **folds**, they give up the chance to win the pot. However:
+
+- **Cards already placed** remain on the table and **can still be affected by jokers**.
+- If the player folded **after placing only one card**, they must:
+  - **Immediately discard** an additional card from their hand.
+  - This card must match the round's placement rule (**face-down or face-up**).
+- Folded players take no further actions in the round.
+
+> 🃏 Jokers can still swap with **folded player’s cards**.  
+> 🎯 This preserves the board and strategic elements even after a fold.
 
 ---
 
@@ -114,8 +123,8 @@ Each player scores based on the **sum of their two played cards**, plus **one ap
 
 > Notes:
 > - A straight may be A–2 (Ace counts as low).  
-> - Only the highest applicable bonus is counted.  
-> - A Straight Flush replaces both the Straight and Flush bonuses.
+> - Only the **highest** applicable bonus is counted.  
+> - A **Straight Flush** replaces both the Straight and Flush bonuses.
 
 ### Examples
 
@@ -174,17 +183,17 @@ Based on a simulation of 100,000 hands, these are the likelihoods of the **best 
 
 ---
 
-## Optional 
+## Optional Variants
 
 - **Two-Deck Mode**: Enables a bonus for “Pair + Suit” (treat as +12 points).  
 - **Joker Limit**: Restrict each player to one joker use per hand.  
-- **Sudden Death**: After one tie-break draws, split the pot.
+- **Sudden Death**: After one tie-break draw, split the pot.
 
 ---
 
 ## Example Round Summary
 
-**2-Player Example (Round 1 of Cycle)**
+**2-Player Example (Round 1 of Hand)**
 
 1. Both players ante 5 chips → pot = 10  
 2. Each receives 7 cards  
