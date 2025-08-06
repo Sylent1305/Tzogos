@@ -25,9 +25,9 @@ enum Round_Num
 
 enum GameMode
 {
-	DD = 1, // Double the deck, double the jokers
-	SD, // Sudden death
-	TD, // Till Death
+	SD = 1, // SUDDEN DEATH , default mode
+	TD, // Till death
+	DD, // Double the deck, double the jokers
 	SDD, // Sudden death double deck
 	JL, // restricts one joker each player per hand
 	SD_JL, // Sudden death with joker limit
@@ -44,7 +44,6 @@ enum BonusScore
 	PAIR = 7,
 	SFLUSH = 10,
 	SUITED_PAIR = 12
-
 };
 
 class Game
@@ -69,7 +68,7 @@ class Game
 		void removePlayerFromTurnOrder(const Player& player);
 		void clearPlayerTurnOrder();
 		void shufflePlayerTurnOrder(); 
-		void dealRound();
+		void dealHand();
 		void resetGame();
 		void startGame();
 		void endGame();
@@ -89,8 +88,12 @@ class Game
 		int _maxHands; // define when creating a game in order to limit the number of hands in a game , each hand contains 4 rounds
 		int _gameState; // GameState Enum
 		int _maxPlayers; // maximum number of players in a game
+		int _currentPlayersAmount; // current number of players in the game
 		int _gameMode; // GameMode Enum
+		int _currentRaise; // the current raise amount in the current hand
+		Player _lastRaisePlayer; // the player who made the last raise in the current hand
 		Deck _deck; // deck of cards used in the game
+		std::list<Player> _players_still_in_round; // list of players in the game
 		std::list<Player> _player_turn_order; // list of players in the order they will play
 
 

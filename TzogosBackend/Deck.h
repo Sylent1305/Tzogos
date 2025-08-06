@@ -19,7 +19,7 @@ class Deck
         void shuffle();
         Card dealCard();
         void resetDeck();
-        void dealRound(std::list<Player>& players, int amountofcards);
+        void dealHand(std::list<Player>& players, int amountofcards);
     private:
         //properties
         std::list<Card> _deck;
