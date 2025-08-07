@@ -93,6 +93,7 @@ class Game
 		int _currentRaise; // the current raise amount in the current hand
 		Player _lastRaisePlayer; // the player who made the last raise in the current hand
 		Deck _deck; // deck of cards used in the game
+		Deck _trashPile; // cards that are discarded during the game
 		std::list<Player> _players_still_in_round; // list of players in the game
 		std::list<Player> _player_turn_order; // list of players in the order they will play
 

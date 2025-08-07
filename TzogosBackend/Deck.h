@@ -13,16 +13,19 @@ class Deck
 {  
    public:  
         // Constructor and Destructor
-        Deck();  
+        Deck();
+        Deck(int gamemode);  
         ~Deck();  
         // methods
         void shuffle();
         Card dealCard();
-        void resetDeck();
+        void resetDeck(int gamemode);
         void dealHand(std::list<Player>& players, int amountofcards);
+        void emptyDeck();
     private:
         //properties
         std::list<Card> _deck;
+        int _limitJoker;
 };  
 
 #endif // DECK_H

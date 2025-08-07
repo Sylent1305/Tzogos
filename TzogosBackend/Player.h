@@ -2,7 +2,8 @@
 #ifndef PLAYER_H  
 #define PLAYER_H  
 
-#define HAND_SIZE 7  
+#define HAND_SIZE 7 
+#define HAND_ONBOARD_SIZE 2
 
 #include "Card.h"
 #include "Exception.h"
@@ -12,7 +13,8 @@
 class Player  
 {  
    public:  
-       Player(std::string name,std::string passwrd);  
+	   Player();
+       Player(std::string name,std::string passwrd);
        ~Player();  
 
        //methods  
@@ -34,7 +36,7 @@ class Player
        std::string getUUID() const;
 	   std::string getPassword() const;
        void setPassword(const std::string& passwrd);
-
+       int calculateScore();
 
    private:  
        //properties  
@@ -42,6 +44,7 @@ class Player
        std::string _name;
        std::string _passwrd;
        std::array<Card, HAND_SIZE> _hand;  
+	   std::array<Card, HAND_SIZE> _handOnTable; // cards on the table for this player
        int _score;  
        int _chips;
 };  

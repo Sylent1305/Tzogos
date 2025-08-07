@@ -158,7 +158,7 @@ void Game::dealHand()
 
 void Game::resetGame()
 {
-	_deck.resetDeck();
+	_deck.resetDeck(_gameMode);
 	for (Player& player : _player_turn_order)
 	{
 		player.clearHand(); // Clear each player's 
@@ -170,7 +170,7 @@ void Game::startGame()
 	_gameState = IN_PROGRESS; // Set the game state to in progress
 	_handNumber = 0; // Reset hand number
 	_roundNum = FIRST_ROUND; // Reset round number
-	_deck.resetDeck(); // Reset the deck
+	_deck.resetDeck(_gameMode); // Reset the deck
 	dealHand(); // Deal the initial hand to players
 }
 
@@ -228,7 +228,7 @@ void Game::showdown()
 	Player* winner = nullptr;
 	for(Player & player : _players_still_in_round)
 	{
-		player.CalculateScore(); 
+		player.calculateScore(); 
 		if (player.getScore() > maxScore)
 		{
 			maxScore = player.getScore();

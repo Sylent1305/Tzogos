@@ -4,7 +4,7 @@
 
 int main()
 {
-	Player *p = new Player("Shoham");
+	Player *p = new Player("Shoham","123");
 	std::cout << p->toString() << std::endl;
 	delete p;
 }

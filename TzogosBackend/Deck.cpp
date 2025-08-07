@@ -1,8 +1,14 @@
 #include "Deck.h"
+#include "Game.h"
 
 Deck::Deck()
 {
-	resetDeck(); // Initialize the deck with cards and shuffle it
+	emptyDeck();// sets all cards of deck into empty cards
+}
+
+Deck::Deck(int gamemode)
+{
+	resetDeck(gamemode); // Initialize the deck with cards and shuffle it
 }
 
 Deck::~Deck()
@@ -33,27 +39,69 @@ Card Deck::dealCard()
 
 
 
-void Deck::resetDeck()
+void Deck::resetDeck(int gamemode)
 {
-	const int jokers_amount_in_deck = 2; // number of jokers in deck
-	_deck.clear(); // clear the deck
-	// Add code to populate the deck with cards
-	// For example, you can loop through all suits and values to create a standard 52-card deck
-	for (int suit = SPADES; suit <= CLUBS; ++suit)
-	{
-		for (int value = TWO; value <= ACE; ++value)
-		{
-			Card newCard(suit,value);
-			_deck.push_back(newCard);
-		}
-	}
-	for (size_t i = 0; i < jokers_amount_in_deck; i++)
-	{
-		Card newjoker(NONE,JOKER,true);
-		_deck.push_back(newjoker); // add a joker to the deck
-	}
-	this->shuffle(); // shuffle the deck after resetting
+    _deck.clear(); // Clear current deck
+
+    int jokers_per_deck = 2; // Default jokers per standard deck
+    int deck_count = 1; // Number of decks to use
+
+    _limitJoker = false;
+
+    switch (static_cast<GameMode>(gamemode))
+    {
+    case SD:
+    case TD:
+        deck_count = 1;
+        jokers_per_deck = 2;
+        break;
+
+    case DD:
+    case SDD:
+    case TDD_JL:
+    case SDD_JL:
+        deck_count = 2;
+        jokers_per_deck = 4;
+        break;
+
+    case JL:
+    case SD_JL:
+    case TD_JL:
+        deck_count = 1;
+        jokers_per_deck = 2;
+        _limitJoker = true;
+        break;
+
+    default:
+        // Fall back to default if unknown
+        deck_count = 1;
+        jokers_per_deck = 2;
+        break;
+    }
+
+    // Populate deck(s)
+    for (int d = 0; d < deck_count; ++d)
+    {
+        for (int suit = SPADES; suit <= CLUBS; ++suit)
+        {
+            for (int value = TWO; value <= ACE; ++value)
+            {
+                Card newCard(suit, value);
+                _deck.push_back(newCard);
+            }
+        }
+    }
+
+    // Add jokers
+    for (int i = 0; i < jokers_per_deck; ++i)
+    {
+        Card newjoker(NONE, JOKER, true);
+        _deck.push_back(newjoker);
+    }
+
+    this->shuffle(); 
 }
+
 
 void Deck::dealHand(std::list<Player>& players, int amountofcards)
 {
@@ -77,4 +125,15 @@ void Deck::dealHand(std::list<Player>& players, int amountofcards)
 		}
 	}
 	
+}
+
+void Deck::emptyDeck()
+{
+	_deck.clear(); // Clear the deck
+	for (Card card : _deck)
+	{
+		card.setSuit(NONE); // Set the suit of each card to NONE
+		card.setValue(EMPTY); // Set the value of each card to -1, means empty
+		card.setIsJoker(false); // Set the joker flag to false
+	}
 }

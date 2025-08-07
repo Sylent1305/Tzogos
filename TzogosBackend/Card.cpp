@@ -3,10 +3,16 @@
 
 Card::Card()
 {
+	_suit = NONE; // Default suit for an empty card
+	_value = EMPTY; // Default value for an empty card
+	_isjoker = false; // Default is not a joker
 }
 
 Card::Card(bool isjoker)
 {
+	_suit = NONE; // Default suit for a joker
+	_value = JOKER; // Value for a joker
+	_isjoker = isjoker; // Set the joker flag
 }
 
 Card::Card(int suit, int value, bool isjoker)
@@ -86,5 +92,10 @@ void Card::setSuit(int suit)
 void Card::setValue(int value)
 {
 	_value = value;
+}
+
+void Card::setIsJoker(bool isjoker)
+{
+	_isjoker = isjoker;
 }
 

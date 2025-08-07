@@ -3,6 +3,7 @@
 #include <random>
 #include <sstream>
 #include <iomanip>
+#include "Game.h"
 
 // One-time RNG setup (thread-safe if needed)
 static thread_local std::mt19937_64 gen(std::random_device{}());
@@ -27,14 +28,25 @@ std::string generateUUID()
 	return oss.str();
 }
 
+Player::Player()
+{
+	_name = "Guest";
+	_passwrd = "";
+	_uuid = generateUUID();
+	_score = 0;
+	_chips = 0;
+	clearHand();
+}
+
 Player::Player(std::string name, std::string passwrd)
 {
-	this->name = name; 
-	this->passwrd = passwrd;
-	this->uuid = generateUUID();
-	this->score = 0;
-	this->chips = 0;
-	this->clearHand();
+	//add an implementaion in order to validate through db the name and password then pull chips from db
+	_name = name; 
+	_passwrd = passwrd;
+	_uuid = generateUUID();
+	_score = 0;
+	_chips = 0;
+	clearHand();
 }
 Player::~Player()
 {
@@ -49,20 +61,24 @@ bool isEmpty(const Card& card)
 void Player::addCard(const Card& card)
 {
 	for (int i = 0; i < HAND_SIZE; ++i) {
-		if (isEmpty(this->hand[i])) 
+		if (isEmpty(_hand[i])) 
 		{ // find an empty slot in the hand
-			this->hand[i] = card; // add the card to the hand
+			_hand[i] = card; // add the card to the hand
 			return; // exit after adding the card
 		}
 	}
 	throw HandFullException(); // if no empty slot found, throw an exception
 	
 }
-
+//reset hand and hand on table of player
 void Player::clearHand()
 {
 	for (int i = 0; i < HAND_SIZE; ++i) {
-		this->hand[i] = Card(); // fill hand with empty cards 
+		_hand[i] = Card(); // fill hand with empty cards 
+	}
+	for (int i = 0; i < HAND_ONBOARD_SIZE; i++)
+	{
+		_handOnTable[i] = Card();
 	}
 }
 
@@ -73,7 +89,7 @@ std::array<Card, HAND_SIZE> Player::getHand() const
 
 int Player::getScore() const
 {
-	return this->score;
+	return _score;
 }
 
 void Player::setScore(int score)
@@ -81,77 +97,155 @@ void Player::setScore(int score)
 	if (score < 0) {
 		throw InvalidCardValueException(); // score cannot be negative
 	}
-	this->score = score; // set the score
+	_score = score; // set the score
 }
 
 int Player::getChips() const
 {
-	return this->chips;
+	return _chips;
 }
 
 void Player::setChips(int chips)
 {
-	if (chips < 0) {
+	if (chips < 0) 
+	{
 		throw NegativeNumberException(); // chips cannot be negative
 	}
-	this->chips = chips; 
+	_chips = chips; 
 }
 
 void Player::addChips(int chips)
 {
-	this->chips += chips; 
+	_chips += chips; 
 }
 
 void Player::removeChips(int chips)
 {
-	if (this->chips < chips)
+	if (_chips < chips)
 	{
 		throw MissingChipsException(); // not enough chips
 	}
-	this->chips -= chips; 
+	_chips -= chips; 
 }
 
 std::string Player::toString() const
 {
 	std::ostringstream oss;
-	oss << "Name: " << name << " | "
-		<< "Chips: " << chips << " | "
-		<< "UUID: " << uuid;
+	oss << "Name: " << _name << " | "
+		<< "Chips: " << _chips << " | "
+		<< "UUID: " << _uuid;
 	return oss.str();
 }
 
 std::string Player::getName() const
 {
-	return this->name;
+	return _name;
 }
 
 void Player::setName(const std::string& name)
 {
-	this->name = name; 
+	_name = name; 
 }
 
 bool Player::operator==(const Player& other) const
 {
-	return this->uuid == other.uuid;
+	return _uuid == other._uuid;
 }
 
 bool Player::operator!=(const Player& other) const
 {
-	return this->uuid!=other.uuid;
+	return _uuid!=other._uuid;
 }
 
 std::string Player::getUUID() const
 {
-	return this->uuid;
+	return _uuid;
 }
 
 std::string Player::getPassword() const
 {
-	return this->passwrd;
+	return _passwrd;
 }
 
 void Player::setPassword(const std::string& passwrd)
 {
-	this->passwrd = passwrd;
+	_passwrd = passwrd;
 }
 
+int Player::calculateScore()
+{
+	_score = 0; 
+	if (_handOnTable.empty())
+	{
+		throw HandEmptyException(); // cannot calculate score if hand is empty
+	}
+	for (const Card& card : _handOnTable)
+	{
+		//raw score calculations
+		if (card.isJoker())
+		{
+			_score += JOKER; // jokers do not contribute to score
+		}
+		else
+		{
+			_score += card.getValue(); // add the value of the card to the score
+		}
+
+	}
+	//why a temp hand is needed here? idk, but it works so idc.
+	std::array<Card, HAND_ONBOARD_SIZE> tempHand;
+	tempHand[0] = _handOnTable[0];
+	tempHand[1] = _handOnTable[1];
+	if (isFlush(tempHand))
+	{
+		_score += FLUSH; // add flush bonus if both cards have the same suit
+		return _score;
+	}
+	if (isPair(tempHand))
+	{
+		_score += PAIR; // add pair bonus if both cards have the same value
+		return _score;
+	}
+	if (isStraight(tempHand))
+	{
+		_score += STRAIGHT; // special case for Ace and Two
+		return _score;
+	}
+	if (isSuitedPair(tempHand))
+	{
+		_score += SUITED_PAIR; // add suited pair bonus if both cards have the same suit and value
+		return _score;
+	}
+	if (isStraightFlush(tempHand))
+	{
+		_score += SFLUSH; // add straight flush bonus if both cards are jokers
+		return _score;
+	}
+	return _score;
+}
+
+bool isFlush(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
+{
+	return hand[0].getSuit() == hand[1].getSuit();
+}
+
+bool isPair(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
+{
+	return hand[0].getValue() == hand[1].getValue();
+}
+
+bool isStraight(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
+{
+	int diff = std::abs(hand[0].getValue() - hand[1].getValue());
+	return diff == 1 || (diff == 12 && (hand[0].getValue() == ACE || hand[1].getValue() == ACE)); // special case for Ace and Two
+}
+
+bool isSuitedPair(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
+{
+	return isFlush(hand) && isPair(hand);
+}
+
+bool isStraightFlush(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
+{
+	return isFlush(hand) && isStraight(hand);
+}

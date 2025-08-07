@@ -47,6 +47,7 @@ class Card
 		bool isJoker() const;
 		void setSuit(int suit);
 		void setValue(int value);
+		void setIsJoker(bool isjoker);
 		std::string toString() const;
 		
 		//copy constractor
