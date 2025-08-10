@@ -78,11 +78,29 @@ class Game
 		Deck getDeck() const;
 		std::string toString() const; // for debugging purposes
 		std::list<Player> getPlayers() const; 
-		void showdown(); // to determine the winner of the hand based on players' hands
-		
+		void showdown(); // determine the winner of the round based on players' boards
 
+		// betting
+		void setAnte(int ante);
+		int getAnte() const;
+		int getPot() const;
+		void anteUp();
+		void betRaise(Player& player, int amount);
+		void call(Player& player);
+		void check(Player& player);
+		void fold(Player& player, bool placedOnlyOneCard);
+
+		// round actions
+		void placeCard(Player& player, int handIndex, int boardIndex, bool faceUp);
+		void useJokerSwap(Player& actor, Player& target, int targetBoardIndex, int actorHandIndex);
+		void endRoundResolve();
+
+		// full game flow
+		void startBettingRound();
 
 	private:
+		void playRoundPattern(bool firstFaceUp, bool secondFaceUp, bool hasCommunity);
+
 		int _roundNum; // Round_Num Enum
 		int _handNumber; // to keep count when the next game will start
 		int _maxHands; // define when creating a game in order to limit the number of hands in a game , each hand contains 4 rounds
@@ -96,7 +114,7 @@ class Game
 		Deck _trashPile; // cards that are discarded during the game
 		std::list<Player> _players_still_in_round; // list of players in the game
 		std::list<Player> _player_turn_order; // list of players in the order they will play
-
-
+		int _pot = 0;
+		int _ante = 0;
 };
 #endif // GAME_H

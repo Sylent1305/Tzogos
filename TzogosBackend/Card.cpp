@@ -36,10 +36,10 @@ std::string Card::toString() const
 	std::string suitStr;
 	switch (_suit)
 	{
-	case SPADES:   suitStr = "♠"; break;
-	case HEARTS:   suitStr = "♥"; break;
-	case DIAMONDS: suitStr = "♦"; break;
-	case CLUBS:    suitStr = "♣"; break;
+	case SPADES:   suitStr = "\xE2\x99\xA0"; break; // ♠
+	case HEARTS:   suitStr = "\xE2\x99\xA5"; break; // ♥
+	case DIAMONDS: suitStr = "\xE2\x99\xA6"; break; // ♦
+	case CLUBS:    suitStr = "\xE2\x99\xA3"; break; // ♣
 	default:       suitStr = ""; break;
 	}
 	std::string valueStr;
@@ -68,6 +68,20 @@ Card::Card(const Card& other)
 	_value = other._value;
 	_isjoker = other._isjoker;
 }
+
+Card& Card::operator=(const Card& other)
+{
+	if (this != &other) 
+	{
+		_suit = other._suit;
+		_value = other._value;
+		_isjoker = other._isjoker;
+	}
+	return *this; 
+	
+}
+
+
 
 int Card::getSuit() const
 {

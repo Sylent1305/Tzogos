@@ -53,6 +53,9 @@ class Card
 		//copy constractor
 		Card(const Card& other); //_suit(other.suit), _value(other.value), _isjoker(other.isjoker) {}
 
+		//assignment operator
+		Card& operator=(const Card& other);
+
     private:
 		//properties
 		bool _isjoker;

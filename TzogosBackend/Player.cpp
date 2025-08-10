@@ -79,12 +79,69 @@ void Player::clearHand()
 	for (int i = 0; i < HAND_ONBOARD_SIZE; i++)
 	{
 		_handOnTable[i] = Card();
+		_boardFaceUp[i] = false;
 	}
 }
 
 std::array<Card, HAND_SIZE> Player::getHand() const
 {
-	return std::array<Card, HAND_SIZE>();
+	return _hand;
+}
+
+std::array<Card, HAND_ONBOARD_SIZE> Player::getBoard() const
+{
+	return _handOnTable;
+}
+
+void Player::setBoardCard(int index, const Card& card)
+{
+	if (index < 0 || index >= HAND_ONBOARD_SIZE)
+	{
+		throw std::out_of_range("Invalid board index");
+	}
+	_handOnTable[index] = card;
+}
+
+void Player::resetBoard()
+{
+	for (int i = 0; i < HAND_ONBOARD_SIZE; ++i)
+	{
+		_handOnTable[i] = Card();
+		_boardFaceUp[i] = false;
+	}
+}
+
+bool Player::getBoardFaceUp(int index) const
+{
+	if (index < 0 || index >= HAND_ONBOARD_SIZE) throw std::out_of_range("Invalid board index");
+	return _boardFaceUp[index];
+}
+
+void Player::setBoardFaceUp(int index, bool faceUp)
+{
+	if (index < 0 || index >= HAND_ONBOARD_SIZE) throw std::out_of_range("Invalid board index");
+	_boardFaceUp[index] = faceUp;
+}
+
+void Player::removeCardAt(int index)
+{
+	if (index < 0 || index >= HAND_SIZE)
+	{
+		throw std::out_of_range("Invalid hand index");
+	}
+	_hand[index] = Card();
+}
+
+int Player::findFirstNonEmptyIndex() const
+{
+	for (int i = 0; i < HAND_SIZE; ++i)
+	{
+		if (!isEmpty(_hand[i]))
+		{
+			return i;
+		}
+	}
+	return -1;
 }
 
 int Player::getScore() const
@@ -157,6 +214,23 @@ bool Player::operator!=(const Player& other) const
 	return _uuid!=other._uuid;
 }
 
+Player& Player::operator=(const Player& other)
+{
+	if (this != &other)
+	{
+		_uuid = other._uuid;
+		_name = other._name;
+		_passwrd = other._passwrd;
+		_hand = other._hand;
+		_handOnTable = other._handOnTable;
+		_boardFaceUp = other._boardFaceUp;
+		_score = other._score;
+		_chips = other._chips;
+	}
+
+	return *this;
+}
+
 std::string Player::getUUID() const
 {
 	return _uuid;
@@ -175,77 +249,74 @@ void Player::setPassword(const std::string& passwrd)
 int Player::calculateScore()
 {
 	_score = 0; 
-	if (_handOnTable.empty())
-	{
-		throw HandEmptyException(); // cannot calculate score if hand is empty
-	}
 	for (const Card& card : _handOnTable)
 	{
-		//raw score calculations
+		if (card.getValue() == EMPTY)
+		{
+			throw HandEmptyException();
+		}
 		if (card.isJoker())
 		{
-			_score += JOKER; // jokers do not contribute to score
+			_score += JOKER;
 		}
 		else
 		{
-			_score += card.getValue(); // add the value of the card to the score
+			_score += card.getValue();
 		}
-
 	}
-	//why a temp hand is needed here? idk, but it works so idc.
+
 	std::array<Card, HAND_ONBOARD_SIZE> tempHand;
 	tempHand[0] = _handOnTable[0];
 	tempHand[1] = _handOnTable[1];
-	if (isFlush(tempHand))
+	if (isStraightFlush(tempHand))
 	{
-		_score += FLUSH; // add flush bonus if both cards have the same suit
+		_score += SFLUSH;
 		return _score;
 	}
 	if (isPair(tempHand))
 	{
-		_score += PAIR; // add pair bonus if both cards have the same value
+		_score += PAIR;
 		return _score;
 	}
 	if (isStraight(tempHand))
 	{
-		_score += STRAIGHT; // special case for Ace and Two
+		_score += STRAIGHT;
 		return _score;
 	}
-	if (isSuitedPair(tempHand))
+	if (isFlush(tempHand))
 	{
-		_score += SUITED_PAIR; // add suited pair bonus if both cards have the same suit and value
+		_score += FLUSH;
 		return _score;
 	}
-	if (isStraightFlush(tempHand))
-	{
-		_score += SFLUSH; // add straight flush bonus if both cards are jokers
-		return _score;
-	}
+
 	return _score;
 }
 
-bool isFlush(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
+bool Player::isFlush(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
 {
 	return hand[0].getSuit() == hand[1].getSuit();
 }
 
-bool isPair(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
+bool Player::isPair(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
 {
 	return hand[0].getValue() == hand[1].getValue();
 }
 
-bool isStraight(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
+bool Player::isStraight(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
 {
-	int diff = std::abs(hand[0].getValue() - hand[1].getValue());
-	return diff == 1 || (diff == 12 && (hand[0].getValue() == ACE || hand[1].getValue() == ACE)); // special case for Ace and Two
+	int v1 = hand[0].getValue();
+	int v2 = hand[1].getValue();
+	int diff = std::abs(v1 - v2);
+	bool a2 = (v1 == ACE && v2 == TWO) || (v2 == ACE && v1 == TWO);
+	return diff == 1 || a2; // Ace low straight allowed only for A-2
 }
 
-bool isSuitedPair(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
+bool Player::isSuitedPair(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
 {
 	return isFlush(hand) && isPair(hand);
 }
 
-bool isStraightFlush(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
+bool Player::isStraightFlush(const std::array<Card, HAND_ONBOARD_SIZE>& hand)
 {
 	return isFlush(hand) && isStraight(hand);
 }

@@ -33,10 +33,29 @@ class Player
 	   // Overloaded operators
 	   bool operator==(const Player& other) const;
 	   bool operator!=(const Player& other) const;
+       Player& operator=(const Player& other);
        std::string getUUID() const;
 	   std::string getPassword() const;
        void setPassword(const std::string& passwrd);
        int calculateScore();
+
+       // Board helpers
+       std::array<Card, HAND_ONBOARD_SIZE> getBoard() const;
+       void setBoardCard(int index, const Card& card);
+       void resetBoard();
+       bool getBoardFaceUp(int index) const;
+       void setBoardFaceUp(int index, bool faceUp);
+       // Hand helpers
+       void removeCardAt(int index);
+       int findFirstNonEmptyIndex() const;
+
+       //helper functions
+       static bool isFlush(const std::array<Card, HAND_ONBOARD_SIZE>& hand);
+       static bool isPair(const std::array<Card, HAND_ONBOARD_SIZE>& hand);
+       static bool isStraight(const std::array<Card, HAND_ONBOARD_SIZE>& hand);
+       static bool isSuitedPair(const std::array<Card, HAND_ONBOARD_SIZE>& hand);
+       static bool isStraightFlush(const std::array<Card, HAND_ONBOARD_SIZE>& hand);
+
 
    private:  
        //properties  
@@ -44,7 +63,8 @@ class Player
        std::string _name;
        std::string _passwrd;
        std::array<Card, HAND_SIZE> _hand;  
-	   std::array<Card, HAND_SIZE> _handOnTable; // cards on the table for this player
+	   std::array<Card, HAND_ONBOARD_SIZE> _handOnTable; // cards on the table for this player
+       std::array<bool, HAND_ONBOARD_SIZE> _boardFaceUp;
        int _score;  
        int _chips;
 };  

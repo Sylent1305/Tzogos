@@ -25,7 +25,7 @@ class Deck
     private:
         //properties
         std::list<Card> _deck;
-        int _limitJoker;
+        bool _limitJoker;
 };  
 
 #endif // DECK_H

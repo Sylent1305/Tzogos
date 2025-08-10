@@ -1,5 +1,6 @@
 #include "Deck.h"
 #include "Game.h"
+#include <vector>
 
 Deck::Deck()
 {
